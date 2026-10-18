@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    image: conciliador-razao:local
+    ports:
+      - "127.0.0.1:8501:8501"   # so na maquina local, nunca na rede
+    restart: unless-stopped
