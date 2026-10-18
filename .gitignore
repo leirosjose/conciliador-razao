@@ -1,0 +1,15 @@
+# ambiente e segredos
+.env
+.venv/
+
+# caches do Python e das ferramentas
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# saidas locais
+b_*
+*.log
+
+# sistema
+.DS_Store
