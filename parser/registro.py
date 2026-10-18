@@ -50,13 +50,16 @@ def descarte_do_xlrd() -> io.StringIO:
 
 def _lugar(arquivo: str, linha: int, funcao: str) -> str:
     caminho = Path(arquivo)
-    try:
-        nome = caminho.resolve().relative_to(_RAIZ).as_posix()
-    except ValueError:
-        partes = caminho.parts
-        # biblioteca: o lugar dentro dela (pasta/arquivo), sem o caminho da instalacao
-        # (que traria nome de usuario da maquina)
-        nome = "/".join(partes[partes.index("site-packages") + 1:] if "site-packages" in partes else partes[-2:])
+    partes = caminho.parts
+    if "site-packages" in partes:
+        # biblioteca: o lugar dentro dela (pasta/arquivo), sem o caminho da instalacao (que traria nome de usuario
+        # da maquina); checado ANTES do relative_to, pra valer com a venv dentro ou fora da pasta do projeto
+        nome = "/".join(partes[partes.index("site-packages") + 1:])
+    else:
+        try:
+            nome = caminho.resolve().relative_to(_RAIZ).as_posix()
+        except ValueError:
+            nome = "/".join(partes[-2:])
     return f"{nome}:{linha} ({funcao})"
 
 

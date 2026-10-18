@@ -20,12 +20,12 @@ docker compose up
 
 Abra http://127.0.0.1:8501 e envie `exemplos/razao_exemplo_sem_par.xls`.
 
-Sem Docker (Python 3.11 ou mais novo; o ambiente virtual fica fora da pasta do projeto):
+Sem Docker (Python 3.11 ou mais novo):
 
 ```bash
-python3 -m venv ~/.venvs/conciliador-razao
-~/.venvs/conciliador-razao/bin/pip install -r requirements.txt
-~/.venvs/conciliador-razao/bin/streamlit run app/main.py --server.address 127.0.0.1 --server.headless true
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/streamlit run app/main.py --server.address 127.0.0.1 --server.headless true
 ```
 
 ## O exemplo
@@ -141,27 +141,27 @@ mostra que a diferença entre a tabela e o saldo é exatamente o que está sem d
 ## Testes
 
 ```bash
-python3 -m venv ~/.venvs/conciliador-razao
-~/.venvs/conciliador-razao/bin/pip install -r requirements-dev.txt
-~/.venvs/conciliador-razao/bin/python -m pytest
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-dev.txt
+.venv/bin/python -m pytest
 ```
 
-São 1.496 testes: 1.461 rodam por padrão (e no CI) e 35 são opcionais, fora da suíte padrão e do CI. Desses, 34
+São 1.498 testes: 1.463 rodam por padrão (e no CI) e 35 são opcionais, fora da suíte padrão e do CI. Desses, 34
 abrem a tela num navegador real (Chromium, via Playwright), ligados por `CONCILIADOR_TESTE_NAVEGADOR=1`:
 
 ```bash
-~/.venvs/conciliador-razao/bin/playwright install chromium
-CONCILIADOR_TESTE_NAVEGADOR=1 ~/.venvs/conciliador-razao/bin/python -m pytest
+.venv/bin/playwright install chromium
+CONCILIADOR_TESTE_NAVEGADOR=1 .venv/bin/python -m pytest
 ```
 
 O último, com o app de pé (`docker compose up`), sobe o exemplo pela tela e confere o resultado declarado; liga com
 `CONCILIADOR_URL`:
 
 ```bash
-CONCILIADOR_URL=http://127.0.0.1:8501 ~/.venvs/conciliador-razao/bin/python -m pytest tests/test_exemplo_navegador.py
+CONCILIADOR_URL=http://127.0.0.1:8501 .venv/bin/python -m pytest tests/test_exemplo_navegador.py
 ```
 
-Estilo: `~/.venvs/conciliador-razao/bin/ruff check .` (configuração em `pyproject.toml`). A integração contínua roda ruff, pytest e o
+Estilo: `.venv/bin/ruff check .` (configuração em `pyproject.toml`). A integração contínua roda ruff, pytest e o
 build da imagem a cada push.
 
 ## Desenvolvido com Claude Code e Codex

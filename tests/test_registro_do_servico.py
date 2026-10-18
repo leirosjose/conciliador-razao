@@ -474,6 +474,21 @@ def test_quadro_de_biblioteca_mostra_pasta_arquivo_linha_sem_o_caminho_da_instal
     assert "pasta_de_fora/modulo_de_fora.py:2 (explode)" in texto and str(tmp_path) not in texto
 
 
+@pytest.mark.parametrize("instalacao", [RAIZ / ".venv", Path("/opt/pasta_de_fora/venv")], ids=["venv_dentro", "venv_fora"])
+def test_quadro_de_biblioteca_sai_sem_o_caminho_da_venv_com_ela_dentro_ou_fora_da_pasta(instalacao):
+    # O teste acima so prova a venv em que a suite roda; aqui o quadro leva o caminho de uma biblioteca instalada numa
+    # venv DENTRO e numa FORA da pasta do projeto, qualquer que seja a venv desta rodada (nenhum arquivo e criado).
+    arquivo = instalacao.resolve() / "lib" / "python3.13" / "site-packages" / "pacote_ficticio" / "modulo.py"
+    escopo = {}
+    exec(compile("def explode():\n    raise RuntimeError('MARCA_X')\n", str(arquivo), "exec"), escopo)
+    with pytest.raises(RuntimeError) as e:
+        escopo["explode"]()
+    texto = _pilha(e.value)
+    assert re.search(r"(?:em|<-) pacote_ficticio/modulo\.py:2 \(explode\)", texto), texto
+    for proibido in (str(instalacao), ".venv", "site-packages", "python3.13", "MARCA_X"):
+        assert proibido not in texto, proibido
+
+
 def test_toda_abertura_do_xlrd_inclusive_a_do_reparo_leva_destino_descartavel(monkeypatch):
     import xlrd
 
