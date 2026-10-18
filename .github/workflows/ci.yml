@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - name: Instalar ruff (versao do requirements-dev.txt)
+        run: pip install "$(grep -E '^ruff==' requirements-dev.txt | cut -d' ' -f1)"
+      - name: ruff check
+        run: ruff check .
+
+  testes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Instalar dependencias
+        run: pip install -r requirements-dev.txt
+      - name: pytest (os testes de navegador sao opt-in e pulam sem a variavel)
+        run: python -m pytest -q -p no:cacheprovider
+
+  docker:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - name: docker build
+        run: docker build -t conciliador-razao:ci .
