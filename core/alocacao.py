@@ -22,12 +22,12 @@ from typing import Sequence
 from core.composicao import nao_detalhado
 from core.modelo import (
     ALVO_ANTERIOR,
+    NF,
     AlocacaoManual,
     DecisaoManual,
     DestinoAlocacao,
     ErroAlocacao,
     ItemRevisao,
-    NF,
     ResultadoCasamento,
 )
 

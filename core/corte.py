@@ -24,14 +24,21 @@ impresso so' vale se a razao foi lida certo.
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
-from datetime import date
 from decimal import Decimal
 from typing import Sequence
 
-from core.modelo import (ALVO_ANTERIOR, NF, Achado, DecisaoManual,
-                         DestinoAlocacao,
-                         FechadoPorSaldoZero, ItemRevisao, Lancamento, Nivel,
-                         ResultadoCasamento)
+from core.modelo import (
+    ALVO_ANTERIOR,
+    NF,
+    Achado,
+    DecisaoManual,
+    DestinoAlocacao,
+    FechadoPorSaldoZero,
+    ItemRevisao,
+    Lancamento,
+    Nivel,
+    ResultadoCasamento,
+)
 
 ZERO = Decimal("0.00")
 ANTES_DE_TUDO = -1      # posicao do saldo anterior

@@ -12,8 +12,6 @@ dois consumidores (o self-check e a tela).
 from datetime import date
 from decimal import Decimal
 
-from parser.excel import ExcelParser
-from parser.historico import ClassificadorHistorico
 from core.classifica import Classificacao, Tipo
 from core.conferencia import conferir
 from core.modelo import (
@@ -23,9 +21,9 @@ from core.modelo import (
     Origem,
     ResultadoConferencia,
 )
-
+from parser.excel import ExcelParser
+from parser.historico import ClassificadorHistorico
 from tests.helpers import GOLDEN as FIXTURE
-
 
 # --- Conta.saldo_final: fonte unica de "qual e o saldo final" ---
 

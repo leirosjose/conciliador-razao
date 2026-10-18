@@ -11,7 +11,7 @@ from decimal import Decimal
 from core.casamento import casar
 from core.classifica import Classificacao, Tipo
 from core.composicao import compor
-from core.modelo import Alocacao, MotivoRevisao, NF, Nivel
+from core.modelo import NF, Alocacao, MotivoRevisao, Nivel
 from core.veredito import self_check_composicao
 from parser.historico import ClassificadorHistorico
 from tests.helpers import lanc

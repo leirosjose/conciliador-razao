@@ -20,8 +20,7 @@ from __future__ import annotations
 
 from decimal import ROUND_HALF_UP, Decimal
 
-from core.modelo import (Achado, ComposicaoItem, Conta, DecisaoManual,
-                         ItemRevisao, NF, Nivel, Origem)
+from core.modelo import NF, Achado, ComposicaoItem, Conta, DecisaoManual, ItemRevisao, Nivel, Origem
 
 ZERO = Decimal("0")
 TOL = Decimal("0.01")        # tolerancia de centavos p/ conferir a identidade do balde

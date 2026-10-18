@@ -13,8 +13,7 @@ compara contra o saldo e a regra de serie pelo saldo.
 from datetime import date
 from decimal import Decimal
 
-from core.modelo import (CriterioSugestao, DestinoAlocacao, ItemRevisao,
-                         MotivoRevisao, NF)
+from core.modelo import NF, CriterioSugestao, DestinoAlocacao, ItemRevisao, MotivoRevisao
 from core.regras_sugestao import serie_x_valor_declarado
 from core.sugestao import ContextoSugestao
 from parser.historico import ClassificadorHistorico

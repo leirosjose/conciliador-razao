@@ -4,18 +4,23 @@ A casca nao soma nada: os totais e a ponte chegam prontos do core
 (res.totais_tabela, res.ponte). Aqui se testa rotulo, ordem, formato e que
 a tela/planilha mostram o que o core mandou.
 """
+from dataclasses import replace
+from decimal import Decimal
 from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest
 
-from dataclasses import replace
-from decimal import Decimal
-
-from app.apresentacao import (composicao_linhas, itens_da_tabela,
-                              nota_fora_da_tabela, ponte_celulas,
-                              ponte_linhas, status_ponte, total_celulas,
-                              total_linha)
+from app.apresentacao import (
+    composicao_linhas,
+    itens_da_tabela,
+    nota_fora_da_tabela,
+    ponte_celulas,
+    ponte_linhas,
+    status_ponte,
+    total_celulas,
+    total_linha,
+)
 from core.conferencia import conferir
 from parser.excel import ExcelParser
 from parser.historico import ClassificadorHistorico

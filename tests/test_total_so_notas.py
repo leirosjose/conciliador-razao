@@ -14,7 +14,6 @@ Invariantes (com as quitadas, sobre a tabela inteira):
 """
 from decimal import Decimal
 
-
 from core.conferencia import conferir
 from core.modelo import Origem
 from parser.excel import ExcelParser

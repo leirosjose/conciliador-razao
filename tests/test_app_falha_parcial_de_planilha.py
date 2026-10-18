@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 from streamlit.testing.v1 import AppTest
 
-from app.main import _EntradaLote, _downloads_do_lote
+from app.main import _downloads_do_lote, _EntradaLote
 from app.pipeline import processar_excel
 from relatorio import zip_relatorios
 
@@ -33,7 +33,8 @@ FRASE_TELA = "Erro inesperado ao montar a tela; a tela não foi desenhada por in
 def _injeta_falha_de_planilha(monkeypatch, *, nome_com="FALHA"):
     """A tela importa de `relatorio` a CADA execucao: trocar o atributo ali, ANTES de rodar, injeta
     a falha."""
-    import relatorio, relatorio.excel
+    import relatorio
+    import relatorio.excel
     original = relatorio.gerar_excel
 
     def gerar_excel_falho(resultados, dados, nome_origem, *a, **k):
@@ -179,6 +180,7 @@ def test_excecao_do_fragmento_ja_mostrada_pelo_streamlit_nao_vira_uma_2a_caixa(m
     """FragmentHandledException e `Exception` e o Streamlit ja desenhou o erro do fragmento: o `try` do corpo a deixa
     passar. Sem a clausula `except FragmentHandledException: raise`, o corpo desenharia a frase dele POR CIMA (caixa dupla)."""
     from streamlit.errors import FragmentHandledException
+
     import app.apresentacao as ap
 
     def titulo_que_ja_foi_mostrado(*a, **k):
@@ -247,7 +249,7 @@ def _plana(no):
 
 
 def test_desfazer_com_erro_mostra_a_frase_logo_abaixo_do_titulo_das_decisoes(monkeypatch):
-    from app.main import AlocacaoManual                                    # noqa: F401 (o app ja importa)
+    from app.main import AlocacaoManual  # noqa: F401 (o app ja importa)
     at = AppTest.from_file(str(MAIN), default_timeout=60).run()
     at.file_uploader[0].set_value([("sintetica_integra.xls", INTEGRA, MIME)]).run()
     at.selectbox[0].select_index(0).run()

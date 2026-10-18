@@ -5,14 +5,12 @@ ordem (classifica -> casar -> compor -> veredito) vive em core.conferencia.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-
 from typing import Mapping, Sequence
 
 from core.conferencia import conferir
 from core.modelo import AlocacaoManual, Conta, ResultadoConferencia
 from parser.excel import ExcelParser
 from parser.historico import ClassificadorHistorico
-
 
 # Tetos da ENTRADA por upload (o modo banco tem os proprios limites e nao passa por aqui): acima deles o arquivo
 # inteiro e recusado depois da leitura e antes do motor -- e' o motor que custa tempo e memoria no servidor.

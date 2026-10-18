@@ -11,9 +11,15 @@ from pathlib import Path
 
 import pytest
 
-from app.apresentacao import (NAO_DECIDIDO, REGISTRADO, _CLASSE_ALERTA,
-                              alertas_nao_decididos, alertas_registrados,
-                              classe_alerta, triagem_linhas)
+from app.apresentacao import (
+    _CLASSE_ALERTA,
+    NAO_DECIDIDO,
+    REGISTRADO,
+    alertas_nao_decididos,
+    alertas_registrados,
+    classe_alerta,
+    triagem_linhas,
+)
 from core.conferencia import conferir
 from core.modelo import Achado, Nivel
 from parser.excel import ExcelParser
@@ -96,6 +102,7 @@ def test_conta_so_com_registrados_e_conferido_limpo():
     """Rank 3 (verde limpo, por ultimo na ordem) quando so' ha registrados:
     e' um caso comum. Golden + um par anulado: continua limpo."""
     from dataclasses import replace
+
     from tests.helpers import GOLDEN
     limpo = conferir(ExcelParser().parse(GOLDEN)[0], CLASSIFICADOR)
     so_registrado = replace(limpo, achados=list(limpo.achados) + [

@@ -1,14 +1,14 @@
 """Nome entregue ASCII; nomes originais permanecem dentro da planilha."""
-from io import BytesIO
 import json
 import os
 import re
-from pathlib import Path
 import socket
 import subprocess
 import sys
 import time
 import zipfile
+from io import BytesIO
+from pathlib import Path
 
 import openpyxl
 import pytest
@@ -74,7 +74,7 @@ def test_zip_numera_so_os_membros_e_preserva_bytes():
 
 
 def test_apptest_rotulo_e_download_do_lote():
-    from app.main import _EntradaLote, _downloads_do_lote
+    from app.main import _downloads_do_lote, _EntradaLote
     from app.pipeline import processar_excel
     at = _tela(('Conciliação março.xlsx', xlsx_de_n_contas(1)))
     assert len(at.exception) == 0
@@ -119,8 +119,9 @@ def test_guarda_ascii_composto_sufixo_e_compatibilidade():
 def navegador_nomes(tmp_path_factory):
     if os.environ.get('CONCILIADOR_TESTE_NAVEGADOR') != '1':
         pytest.skip('Chromium opt-in: CONCILIADOR_TESTE_NAVEGADOR=1')
-    from playwright.sync_api import sync_playwright
     import urllib.request
+
+    from playwright.sync_api import sync_playwright
     raiz=Path(__file__).resolve().parents[1];pasta=tmp_path_factory.mktemp('browser_nomes')
     processos=[];logs=[];urls={}
     try:

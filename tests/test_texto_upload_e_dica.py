@@ -5,11 +5,11 @@ uma instância local descartável desta cópia e a encerra; nunca usa .env.
 """
 import json
 import os
-from pathlib import Path
 import socket
 import subprocess
 import sys
 import time
+from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest

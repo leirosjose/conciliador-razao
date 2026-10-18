@@ -19,8 +19,7 @@ from datetime import date
 from decimal import Decimal
 
 from core.conferencia import conferir
-from core.modelo import (AlocacaoManual, Conta, CriterioSugestao,
-                         DestinoAlocacao, MotivoRevisao)
+from core.modelo import AlocacaoManual, Conta, CriterioSugestao, DestinoAlocacao, MotivoRevisao
 from parser.historico import ClassificadorHistorico
 from tests.helpers import lanc
 

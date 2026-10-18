@@ -14,8 +14,7 @@ from decimal import Decimal
 import pytest
 
 from core.conferencia import conferir
-from core.modelo import (AlocacaoManual, Conta, DestinoAlocacao, Lancamento,
-                         Nivel)
+from core.modelo import AlocacaoManual, Conta, DestinoAlocacao, Lancamento, Nivel
 from parser.excel import ExcelParser
 from parser.historico import ClassificadorHistorico
 from tests.helpers import GOLDEN

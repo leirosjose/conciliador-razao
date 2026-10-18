@@ -1,9 +1,9 @@
 from decimal import Decimal
 from pathlib import Path
 
+from core.casamento import casar
 from parser.excel import ExcelParser
 from parser.historico import ClassificadorHistorico
-from core.casamento import casar
 
 FIXTURE = Path(__file__).parent / "fixtures" / "golden_sintetico.xls"
 

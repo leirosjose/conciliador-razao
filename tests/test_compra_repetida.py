@@ -8,11 +8,10 @@ dispara. Os dados sao ficticios (um caso com 13 NFs).
 from datetime import date
 from decimal import Decimal
 
-from app.apresentacao import (NAO_DECIDIDO, classe_alerta, frase_achado,
-                              observacoes_tela)
+from app.apresentacao import NAO_DECIDIDO, classe_alerta, frase_achado, observacoes_tela
 from core.classifica import Classificacao, Tipo
 from core.conferencia import conferir
-from core.modelo import Conta, NF, Nivel
+from core.modelo import NF, Conta, Nivel
 from core.veredito import compra_repetida
 from tests.helpers import invariante_de_lugar, lanc
 

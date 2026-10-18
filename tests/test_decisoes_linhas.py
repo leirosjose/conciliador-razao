@@ -7,8 +7,12 @@ import pytest
 from app.apresentacao import decisao_texto, decisoes_linhas
 from app.pipeline import processar_excel
 from core.modelo import (
-    ALVO_ANTERIOR, AlocacaoManual, DestinoAlocacao, ErroAlocacao,
-    FechadoPorSaldoZero, ItemRevisao,
+    ALVO_ANTERIOR,
+    AlocacaoManual,
+    DestinoAlocacao,
+    ErroAlocacao,
+    FechadoPorSaldoZero,
+    ItemRevisao,
 )
 
 SINTETICA = Path(__file__).parent / "fixtures" / "sintetica_integra.xls"

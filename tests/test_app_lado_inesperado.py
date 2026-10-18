@@ -4,8 +4,7 @@ equivalentes de retencao e baixa de adiantamento. Frase so' com fato (regra
 de tela). Dados ficticios."""
 import pytest
 
-from app.apresentacao import (_sao_pagamentos, balde_celulas, balde_detalhes,
-                              motivo_humano)
+from app.apresentacao import _sao_pagamentos, balde_celulas, balde_detalhes, motivo_humano
 from app.materialidade import frase_contagem_motivos
 from core.classifica import Tipo
 from core.modelo import ItemRevisao, MotivoRevisao

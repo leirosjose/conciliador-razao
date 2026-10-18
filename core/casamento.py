@@ -25,6 +25,7 @@ from core.classifica import Classificacao, Tipo
 from core.estorno import parear
 from core.identificacao import id_item, ids_da_razao
 from core.modelo import (
+    NF,
     Achado,
     Alocacao,
     CasamentoPorRegra,
@@ -33,7 +34,6 @@ from core.modelo import (
     ItemRevisao,
     Lancamento,
     MotivoRevisao,
-    NF,
     Nivel,
     RegraCasamento,
     ResultadoCasamento,

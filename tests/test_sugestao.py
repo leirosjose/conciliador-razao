@@ -10,6 +10,7 @@ from decimal import Decimal
 
 import pytest
 
+from core.classifica import Tipo
 from core.conferencia import conferir
 from core.modelo import (
     AlocacaoManual,
@@ -21,7 +22,6 @@ from core.modelo import (
     MotivoRevisao,
     Sugestao,
 )
-from core.classifica import Tipo
 from core.sugestao import REGRAS, ContextoSugestao, sugerir
 from parser.historico import ClassificadorHistorico
 from tests.helpers import lanc
@@ -129,9 +129,7 @@ def test_registro_de_regras_e_a_ordem_de_prioridade():
     A E vem por ULTIMO: C e D leem a serie que o PROPRIO item declara
     ("k de M"); a E infere a partir do que ja foi casado em outros lancamentos.
     Havendo resposta das duas, ganha a que se apoia no que o item diz de si."""
-    from core.regras_sugestao import (continuidade_serie_ordinal,
-                                      serie_x_saldo_remanescente,
-                                      serie_x_valor_declarado)
+    from core.regras_sugestao import continuidade_serie_ordinal, serie_x_saldo_remanescente, serie_x_valor_declarado
     assert REGRAS == (serie_x_saldo_remanescente, serie_x_valor_declarado,
                       continuidade_serie_ordinal)
 

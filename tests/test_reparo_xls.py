@@ -129,8 +129,7 @@ def _xls_com_celula_de_debito(caminho, valor, data=None):
 
     import xlwt
 
-    from tests.fixtures.gerar_sinteticas import (
-        CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial)
+    from tests.fixtures.gerar_sinteticas import CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Razão")
     ws.write(0, 0, "Empresa:"); ws.write(0, 2, EMPRESA)

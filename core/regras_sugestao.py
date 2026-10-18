@@ -13,8 +13,7 @@ from __future__ import annotations
 
 from decimal import Decimal
 
-from core.modelo import (CriterioSugestao, DestinoAlocacao, ItemRevisao, NF,
-                         Sugestao)
+from core.modelo import NF, CriterioSugestao, DestinoAlocacao, ItemRevisao, Sugestao
 
 ZERO = Decimal("0.00")
 CENTAVO = Decimal("0.01")

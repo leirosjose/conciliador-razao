@@ -11,8 +11,7 @@ from decimal import Decimal
 import pytest
 from streamlit.testing.v1 import AppTest
 
-from app.apresentacao import (fechado_celulas_balde, fechado_celulas_nfs,
-                              frase_achado, ponte_celulas)
+from app.apresentacao import fechado_celulas_balde, fechado_celulas_nfs, frase_achado, ponte_celulas
 from core.conferencia import conferir
 from parser.historico import ClassificadorHistorico
 from tests.test_app_ponte import MAIN

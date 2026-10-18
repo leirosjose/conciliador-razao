@@ -4,8 +4,9 @@ import re
 import time
 
 import pytest
-from tests.test_texto_triagem_e_exportacao import navegador_triagem
+
 from tests.test_app_pagina_cortada import xlsx_de_n_contas
+from tests.test_texto_triagem_e_exportacao import navegador_triagem
 
 
 def assenta(page, minimo=1):
@@ -94,6 +95,7 @@ def test_ancora_nao_pula_apos_janela_ou_aba(navegador_triagem,tmp_path,tema,n,po
 @pytest.mark.parametrize('fonte',[False],ids=['upload'])
 def test_resumo_sem_planilha_visivel(navegador_triagem,tmp_path,tema,fonte):
     from playwright.sync_api import expect
+
     from tests.test_texto_triagem_e_exportacao import FIX
     nav,urls=navegador_triagem
     ctx=nav.new_context(color_scheme=tema,viewport={'width':1280,'height':900})

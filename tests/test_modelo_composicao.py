@@ -1,8 +1,8 @@
 from datetime import date
 from decimal import Decimal
 
-from core.modelo import NF, ComposicaoItem, Origem, Lancamento
-from core.classifica import Tipo, Classificacao
+from core.classifica import Classificacao, Tipo
+from core.modelo import NF, ComposicaoItem, Lancamento, Origem
 
 
 def _pag(valor):

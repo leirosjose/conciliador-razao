@@ -123,8 +123,7 @@ def test_sem_quitadas_nao_ha_toggle(tela_golden):
 
 from datetime import date  # noqa: E402
 
-from app.apresentacao import (abrir_fechado, bloco_linhas_nfs,  # noqa: E402
-                              bloco_linhas_sem_nf, frase_bloco, titulo_fechado)
+from app.apresentacao import abrir_fechado, bloco_linhas_nfs, bloco_linhas_sem_nf, frase_bloco, titulo_fechado  # noqa: E402
 from tests.test_ponte import ESTRANHO, PAGAMENTO_NF  # noqa: E402
 
 PAGO_CONF = "Pago conf. FORNECEDOR FICTICIO"
@@ -321,6 +320,7 @@ def test_saldo_no_dominio_vira_palavra():
 
 def test_toda_coluna_da_composicao_tem_ajuda(tela_golden):
     import json
+
     from app.apresentacao import AJUDA_COLUNAS, ajuda_coluna
     config = json.loads(tela_golden.dataframe[0].proto.columns)
     for coluna in AJUDA_COLUNAS:
@@ -453,8 +453,9 @@ def test_triagem_usa_conferido_e_falta_alocar_zero(golden):
 
 def test_colunas_de_dinheiro_zeradas_saem_da_tela_e_do_total(tela_golden):
     import json
+
     from app.apresentacao import colunas_visiveis
-    assert colunas_visiveis(golden_res := conferir(
+    assert colunas_visiveis(conferir(
         ExcelParser().parse(GOLDEN)[0], CLASSIFICADOR).itens) == [
         "NF", "Data NF", "Valor compra", "Total pago", "EM ABERTO",
         "Última quitação", "Idade (dias)"]
@@ -499,8 +500,7 @@ def test_uma_linha_com_dado_segura_a_coluna():
 def test_idade_zero_e_dado():
     """0 dias e' uma idade (nota emitida no ultimo dia), nao ausencia."""
     from app.apresentacao import colunas_visiveis
-    from core.modelo import ComposicaoItem
-    from core.modelo import Origem
+    from core.modelo import ComposicaoItem, Origem
     item = ComposicaoItem(nf_numero="5001", origem=Origem.COMPRA_PERIODO,
                           valor_compra=D("10.00"), total_pago=D("0.00"),
                           total_retido=D("0.00"), saldo_aberto=D("10.00"),
@@ -511,8 +511,7 @@ def test_idade_zero_e_dado():
 def test_em_aberto_nunca_sai():
     """E' a pergunta da tela: mesmo com tudo quitado na visao com quitadas."""
     from app.apresentacao import colunas_visiveis
-    from core.modelo import ComposicaoItem
-    from core.modelo import Origem
+    from core.modelo import ComposicaoItem, Origem
     item = ComposicaoItem(nf_numero="5001", origem=Origem.COMPRA_PERIODO,
                           valor_compra=D("10.00"), total_pago=D("10.00"),
                           total_retido=D("0.00"), saldo_aberto=D("0.00"))
@@ -606,6 +605,7 @@ def test_balde_vazio_diz_so_o_fato(tela_golden):
 
 def _tela_com_saldo_anterior(monkeypatch):
     from datetime import date
+
     from tests.fixtures import gerar_sinteticas as G
     monkeypatch.setattr(G, "SALDO_ANTERIOR", D("-700.00"))
     monkeypatch.setattr(G, "LANCAMENTOS", [

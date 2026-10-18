@@ -27,6 +27,7 @@ def _xls(caminho: Path, *, historico=HIST_LIMPO, numero=5001.0, cta=38.0, nome="
     """.xls sintetico no layout do Dominio: 1 compra de 1.000,00 e 1 debito de 10,00. Os parametros sao as celulas
     do DEBITO (historico, numero, contrapartida) e da linha 'Conta:' (codigo, classificacao, nome)."""
     import xlwt
+
     from tests.fixtures.gerar_sinteticas import CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Razão")

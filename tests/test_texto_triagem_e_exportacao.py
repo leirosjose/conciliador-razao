@@ -1,18 +1,18 @@
 """L4: fatos da triagem/exportação, destinos desenhados e escape dos nomes."""
-import re
-from pathlib import Path
 import json
 import os
+import re
 import socket
 import subprocess
 import sys
 import time
+from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest
 
 from app.apresentacao import FraseAcimaDoLimite, triagem_linhas
-from tests.test_app_pagina_cortada import xlsx_de_n_contas, _tela, INTEGRA
+from tests.test_app_pagina_cortada import INTEGRA, _tela, xlsx_de_n_contas
 
 FIX = INTEGRA.parent
 
@@ -137,8 +137,9 @@ def test_janela_do_lote_repartida_preserva_links_das_duas_entradas():
 def navegador_triagem(tmp_path_factory):
     if os.environ.get('CONCILIADOR_TESTE_NAVEGADOR') != '1':
         pytest.skip('Chromium opt-in: CONCILIADOR_TESTE_NAVEGADOR=1')
-    from playwright.sync_api import sync_playwright
     import urllib.request
+
+    from playwright.sync_api import sync_playwright
     raiz=Path(__file__).resolve().parents[1]
     pasta=tmp_path_factory.mktemp('browser_triagem')
     wrapper=pasta/'tela.py'
@@ -241,6 +242,7 @@ def test_navegador_ancora_resumo_alturas_e_janela(navegador_triagem,tmp_path,tem
 
 def test_link_usa_posicao_original_quando_triagem_reordena():
     from io import BytesIO
+
     import openpyxl
     wb=openpyxl.load_workbook(BytesIO(xlsx_de_n_contas(2)))
     linhas=[r for r in wb.active if r[0].value=='Conta:']

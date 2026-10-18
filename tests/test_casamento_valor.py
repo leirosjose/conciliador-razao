@@ -4,7 +4,6 @@ from decimal import Decimal
 from core.casamento import casar
 from core.classifica import Classificacao, Tipo
 from core.composicao import compor
-from core.veredito import self_check_composicao
 from core.modelo import (
     ComposicaoItem,
     ItemRevisao,
@@ -12,6 +11,7 @@ from core.modelo import (
     Nivel,
     Origem,
 )
+from core.veredito import self_check_composicao
 from tests.helpers import lanc
 
 D = Decimal

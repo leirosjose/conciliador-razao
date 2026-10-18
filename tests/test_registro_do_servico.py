@@ -151,6 +151,7 @@ def test_clique_que_falha_leva_o_nome_da_funcao_o_tipo_e_nao_a_mensagem(servico,
 
 def test_erro_ao_montar_a_tela_leva_o_tipo_e_nao_a_mensagem(servico, monkeypatch, caplog):
     from streamlit.testing.v1 import AppTest
+
     import app.apresentacao as ap
 
     def _explode(*a, **k):
@@ -289,7 +290,7 @@ def test_toda_chamada_de_registro_so_leva_argumento_da_lista_de_fatos_neutros():
 
 def test_uso_normal_nao_escreve_nada_no_registro(servico, monkeypatch):
     """CONTROLE (trava): enviar arquivo integro e baixar a planilha = 0 linha."""
-    from app.main import _EntradaLote, _downloads_do_lote
+    from app.main import _downloads_do_lote, _EntradaLote
     from app.pipeline import processar_excel
     entrada = _EntradaLote(nome="MARCA_NOME.xls", resultados=processar_excel(INTEGRA).resultados, dados=INTEGRA.read_bytes())
     assert len(_downloads_do_lote([entrada])) == 1
@@ -364,6 +365,7 @@ def test_duas_leituras_ao_mesmo_tempo_cada_uma_conta_os_seus_avisos(servico, tmp
 
 def test_o_xls_nao_espera_a_trava_dos_avisos_e_o_xlsx_espera(tmp_path):
     import threading
+
     from parser import registro
     from parser.excel import grade_bruta
     xlsx = _xlsx_com_datas_fora_do_limite(tmp_path / "w.xlsx", 1)
@@ -474,6 +476,7 @@ def test_quadro_de_biblioteca_mostra_pasta_arquivo_linha_sem_o_caminho_da_instal
 
 def test_toda_abertura_do_xlrd_inclusive_a_do_reparo_leva_destino_descartavel(monkeypatch):
     import xlrd
+
     from parser.excel import grade_bruta
     chamadas = []
     original = xlrd.open_workbook

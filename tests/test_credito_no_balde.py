@@ -12,9 +12,14 @@ from pathlib import Path
 
 import pytest
 
-from app.apresentacao import (contexto_incompleto_texto, placar_composicao,
-                              resumo_do_trabalho, status_ponte, titulo_ponte,
-                              triagem_linhas)
+from app.apresentacao import (
+    contexto_incompleto_texto,
+    placar_composicao,
+    resumo_do_trabalho,
+    status_ponte,
+    titulo_ponte,
+    triagem_linhas,
+)
 from app.pipeline import processar_excel
 from core.conferencia import conferir
 from core.modelo import Conta

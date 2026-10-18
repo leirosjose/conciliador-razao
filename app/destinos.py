@@ -21,8 +21,8 @@ from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
 
-from app.apresentacao import ROTULO_ANTERIOR, nome_de_linha, data_br, moeda_br
-from core.modelo import ALVO_ANTERIOR, ComposicaoItem, DestinoAlocacao, Origem
+from app.apresentacao import ROTULO_ANTERIOR, data_br, moeda_br, nome_de_linha
+from core.modelo import ComposicaoItem, DestinoAlocacao, Origem
 
 ZERO = Decimal("0.00")
 

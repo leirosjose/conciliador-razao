@@ -8,8 +8,7 @@ from datetime import date
 from decimal import Decimal
 
 from app.destinos import indice_sugerido, opcoes_de_alocacao
-from core.modelo import (ALVO_ANTERIOR, ComposicaoItem, CriterioSugestao,
-                         DestinoAlocacao, Origem, Sugestao)
+from core.modelo import ALVO_ANTERIOR, ComposicaoItem, CriterioSugestao, DestinoAlocacao, Origem, Sugestao
 
 D = Decimal
 
@@ -168,5 +167,5 @@ def test_rotulo_da_opcao_sugerida_se_identifica_no_dropdown():
                                 D("500.00"), _sugestao("222"))
     (sugerida,) = [o for o in opcoes if o.sugerida]
     outras = [o.rotulo for o in _linhas(opcoes) if not o.sugerida]
-    assert sugerida.rotulo != f"NF 222 · em aberto 900,00 · emitida 10/01/2026"
+    assert sugerida.rotulo != "NF 222 · em aberto 900,00 · emitida 10/01/2026"
     assert all("sugerid" not in r for r in outras)

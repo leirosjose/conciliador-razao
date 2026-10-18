@@ -4,13 +4,28 @@ from decimal import Decimal
 
 import pytest
 
-from app.apresentacao import (ContextoAvisos, avisos_do_item,
-                              aviso_pre_emissao, balde_celulas,
-                              balde_detalhes, contexto_de_avisos,
-                              datas_de_emissao, ressalva_gemeas)
-from core.modelo import (ComposicaoItem, CriterioSugestao, DestinoAlocacao,
-                         ItemRevisao, Lancamento, MotivoRevisao, Origem,
-                         ResultadoConferencia, Conta, Sugestao)
+from app.apresentacao import (
+    ContextoAvisos,
+    aviso_pre_emissao,
+    avisos_do_item,
+    balde_celulas,
+    balde_detalhes,
+    contexto_de_avisos,
+    datas_de_emissao,
+    ressalva_gemeas,
+)
+from core.modelo import (
+    ComposicaoItem,
+    Conta,
+    CriterioSugestao,
+    DestinoAlocacao,
+    ItemRevisao,
+    Lancamento,
+    MotivoRevisao,
+    Origem,
+    ResultadoConferencia,
+    Sugestao,
+)
 
 D = Decimal
 

@@ -19,8 +19,10 @@ from pathlib import Path
 
 _RAIZ = Path(__file__).resolve().parent.parent
 _PROFUNDIDADE_DA_CAUSA = 3
-_TRAVA_DOS_AVISOS = threading.RLock()       # reentrante: leitura dentro de leitura, na mesma thread, nao trava o servico
-_AVISOS_JA_REGISTRADOS: set = set()          # hashes cujo aviso ja virou linha: 1 linha por arquivo, nao 1 por leitura/reexecucao
+# reentrante: leitura dentro de leitura, na mesma thread, nao trava o servico
+_TRAVA_DOS_AVISOS = threading.RLock()
+# hashes cujo aviso ja virou linha: 1 linha por arquivo, nao 1 por leitura/reexecucao
+_AVISOS_JA_REGISTRADOS: set = set()
 _LIMITE_DOS_REGISTRADOS = 2000
 _TRAVA_DO_CONJUNTO = threading.Lock()
 
@@ -52,7 +54,8 @@ def _lugar(arquivo: str, linha: int, funcao: str) -> str:
         nome = caminho.resolve().relative_to(_RAIZ).as_posix()
     except ValueError:
         partes = caminho.parts
-        # biblioteca: o lugar dentro dela (pasta/arquivo), sem o caminho da instalacao (que traria nome de usuario da maquina)
+        # biblioteca: o lugar dentro dela (pasta/arquivo), sem o caminho da instalacao
+        # (que traria nome de usuario da maquina)
         nome = "/".join(partes[partes.index("site-packages") + 1:] if "site-packages" in partes else partes[-2:])
     return f"{nome}:{linha} ({funcao})"
 
@@ -120,8 +123,9 @@ def avisos_calados(log: logging.Logger, hash_do_arquivo_lido):
 
 def calando_avisos(log: logging.Logger, hash_dos_argumentos, quando=None):
     """Decorador de `avisos_calados` pra funcao de leitura sem mexer no corpo dela:
-    `hash_dos_argumentos(*args, **kwargs)` devolve o hash do arquivo que a funcao le; `quando(*args, **kwargs)`, se dado,
-    diz se esta chamada entra na janela (o .xls nao emite aviso de biblioteca e nao precisa esperar a trava)."""
+    `hash_dos_argumentos(*args, **kwargs)` devolve o hash do arquivo que a funcao le; `quando(*args, **kwargs)`,
+    se dado, diz se esta chamada entra na janela (o .xls nao emite aviso de biblioteca e nao precisa esperar a
+    trava)."""
     def decorador(funcao):
         @wraps(funcao)
         def envelopada(*args, **kwargs):

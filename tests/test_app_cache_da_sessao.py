@@ -1,14 +1,14 @@
 """Contadores em memória, sessão isolada e fotografia da exportação."""
-from copy import deepcopy
-from datetime import datetime
-from io import BytesIO
-from pathlib import Path
-import zipfile
 import os
 import socket
 import subprocess
 import sys
 import time
+import zipfile
+from copy import deepcopy
+from datetime import datetime
+from io import BytesIO
+from pathlib import Path
 
 import openpyxl
 import pytest

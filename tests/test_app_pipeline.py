@@ -5,8 +5,8 @@ da TELA (parser -> conferir) reproduz o golden, sem subir o Streamlit.
 from decimal import Decimal
 from pathlib import Path
 
-from core.modelo import Nivel
 from app.pipeline import processar_excel
+from core.modelo import Nivel
 
 FIXTURE = Path(__file__).parent / "fixtures" / "golden_sintetico.xls"
 FIXTURE_CORROMPIDA = Path(__file__).parent / "fixtures" / "sintetica_corrompida.xls"
@@ -209,8 +209,7 @@ def _razao_xls_com_contas(caminho, codigos):
 
     import xlwt
 
-    from tests.fixtures.gerar_sinteticas import (
-        CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial)
+    from tests.fixtures.gerar_sinteticas import CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Razão")
     ws.write(0, 0, "Empresa:"); ws.write(0, 2, EMPRESA)

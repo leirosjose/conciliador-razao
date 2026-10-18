@@ -6,9 +6,17 @@ na triagem do balde (quanto do balde ja vem proposto) e na triagem do lote
 """
 from app.apresentacao import triagem_linhas
 from app.materialidade import frase_sugestoes
-from core.modelo import (Achado, Conta, CriterioSugestao, DestinoAlocacao,
-                         ItemRevisao, MotivoRevisao, Nivel, ResultadoConferencia,
-                         Sugestao)
+from core.modelo import (
+    Achado,
+    Conta,
+    CriterioSugestao,
+    DestinoAlocacao,
+    ItemRevisao,
+    MotivoRevisao,
+    Nivel,
+    ResultadoConferencia,
+    Sugestao,
+)
 from tests.helpers import lanc
 
 SUGESTAO = Sugestao(destino=DestinoAlocacao.LINHA_ABERTA, alvo="810108",

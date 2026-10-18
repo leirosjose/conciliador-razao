@@ -15,8 +15,7 @@ from decimal import Decimal
 
 import pytest
 
-from core.modelo import (CriterioSugestao, DestinoAlocacao, ItemRevisao,
-                         MotivoRevisao, NF)
+from core.modelo import NF, CriterioSugestao, DestinoAlocacao, ItemRevisao, MotivoRevisao
 from core.regras_sugestao import serie_x_saldo_remanescente
 from core.sugestao import ContextoSugestao
 from parser.historico import ClassificadorHistorico
@@ -246,10 +245,10 @@ def test_ponta_a_ponta_a_regra_sugere_o_que_o_casamento_deixou():
     ja mais quitada que a outra."""
     from core.conferencia import conferir
 
-    pgtos = [lanc(f"Valor ref. a PGTO A FORN TESTE NF 11111", numero=f"p{i}",
+    pgtos = [lanc("Valor ref. a PGTO A FORN TESTE NF 11111", numero=f"p{i}",
                   dia=10 + i, debito="26000.00", saldo="0.00")
              for i in range(4)]
-    pgtos += [lanc(f"Valor ref. a PGTO A FORN TESTE NF 22222", numero=f"q{i}",
+    pgtos += [lanc("Valor ref. a PGTO A FORN TESTE NF 22222", numero=f"q{i}",
                    dia=20 + i, debito="26000.00", saldo="0.00")
               for i in range(2)]
     empatado = lanc(PARCELA.format(k=3, m=5), numero="318841", dia=28,

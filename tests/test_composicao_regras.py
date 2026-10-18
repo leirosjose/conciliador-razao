@@ -3,8 +3,8 @@ Conta construida na mao, sem I/O. So core.composicao (sem veredito)."""
 from datetime import date
 from decimal import Decimal
 
-from core.modelo import NF, Lancamento, Origem
 from core.composicao import compor
+from core.modelo import NF, Lancamento, Origem
 
 
 def _pag(valor, dia=1):

@@ -6,9 +6,8 @@ travam que a evidencia chega legivel ao conferente — e que ela e DERIVADA de
 """
 from decimal import Decimal
 
-from app.apresentacao import (balde_celulas, decisoes_celulas, frase_sugestao)
-from core.modelo import (CriterioSugestao, DecisaoManual, DestinoAlocacao,
-                         ItemRevisao, MotivoRevisao, Sugestao)
+from app.apresentacao import balde_celulas, decisoes_celulas, frase_sugestao
+from core.modelo import CriterioSugestao, DecisaoManual, DestinoAlocacao, ItemRevisao, MotivoRevisao, Sugestao
 from tests.helpers import lanc
 
 D = Decimal
@@ -156,9 +155,8 @@ def test_frase_do_par_diz_que_os_dois_sairam_da_revisao():
 
 
 def test_achado_sem_lancamentos_cai_no_fallback_sem_estourar():
-    from core.modelo import Achado, Nivel
-
     from app.apresentacao import frase_achado
+    from core.modelo import Achado, Nivel
 
     a = Achado(nivel=Nivel.ALERTA, codigo="estorno_pareado", mensagem="par anulado")
     assert frase_achado(a) == "par anulado"

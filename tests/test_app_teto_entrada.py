@@ -98,8 +98,12 @@ def test_arquivo_unico_com_101_contas_e_recusado():
 
 
 def test_as_3_frases_e_o_rotulo_da_triagem():
-    from app.apresentacao import (ACIMA_DO_LIMITE, arquivo_com_conta_grande_texto, arquivo_com_contas_demais_texto,
-                                  arquivo_com_contas_grandes_texto)
+    from app.apresentacao import (
+        ACIMA_DO_LIMITE,
+        arquivo_com_conta_grande_texto,
+        arquivo_com_contas_demais_texto,
+        arquivo_com_contas_grandes_texto,
+    )
     assert arquivo_com_conta_grande_texto("a.xlsx", "9001", 5001, 5000) == (
         "'a.xlsx': a conta 9001 tem 5.001 lançamentos; o limite por conta é 5.000. "
         "Nenhum resultado foi gerado pra este arquivo.")
@@ -112,8 +116,12 @@ def test_as_3_frases_e_o_rotulo_da_triagem():
 
 
 def test_as_frases_passam_na_regra_de_tela():
-    from app.apresentacao import (ACIMA_DO_LIMITE, arquivo_com_conta_grande_texto, arquivo_com_contas_demais_texto,
-                                  arquivo_com_contas_grandes_texto)
+    from app.apresentacao import (
+        ACIMA_DO_LIMITE,
+        arquivo_com_conta_grande_texto,
+        arquivo_com_contas_demais_texto,
+        arquivo_com_contas_grandes_texto,
+    )
     from tests.test_regra_de_tela import _violacoes
     assert _violacoes([arquivo_com_conta_grande_texto("a.xlsx", "9001", 5001, 5000),
                        arquivo_com_contas_grandes_texto("a.xlsx", 3, "9002", 12345, 5000),

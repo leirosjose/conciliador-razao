@@ -12,8 +12,7 @@ from decimal import Decimal
 
 from core.casamento import casar
 from core.corte import localizar_corte
-from core.modelo import (NF, ItemRevisao, Lancamento, MotivoRevisao, Nivel,
-                         ResultadoCasamento)
+from core.modelo import NF, ItemRevisao, Lancamento, MotivoRevisao, Nivel, ResultadoCasamento
 from parser.historico import ClassificadorHistorico
 from tests.test_ponte import COMPRA, ESTRANHO, PAGAMENTO_NF, _conta
 
@@ -186,7 +185,7 @@ def test_recua_pro_zero_anterior_sem_cruzamento():
 
 # --- particao: o resultado do casamento dividido no corte ---------------------
 
-from core.corte import particionar   # noqa: E402
+from core.corte import particionar  # noqa: E402
 
 
 def _particao(linhas, saldo_anterior="0.00"):

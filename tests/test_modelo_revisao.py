@@ -2,11 +2,11 @@ from datetime import date
 from decimal import Decimal
 
 from core.modelo import (
+    NF,
     ItemRevisao,
     Lancamento,
     MotivoRevisao,
     Nivel,
-    NF,
     ResultadoCasamento,
 )
 

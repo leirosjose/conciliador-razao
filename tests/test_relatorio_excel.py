@@ -17,9 +17,7 @@ import pytest
 from openpyxl.utils import get_column_letter
 
 from app.pipeline import processar_excel
-from relatorio.excel import (ABA_CONFERENCIA, ABA_RAZAO, CLASSIFICACOES,
-                             COL_CONFERIDO,
-                             gerar_excel)
+from relatorio.excel import ABA_CONFERENCIA, ABA_RAZAO, CLASSIFICACOES, COL_CONFERIDO, gerar_excel
 from tests.helpers import GOLDEN, identidade_das_linhas
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -169,9 +167,7 @@ def test_wrap_das_decisoes_segue_a_coluna_do_historico_e_nao_o_indice():
     wrap por indice o Historico teria perdido a quebra de linha em silencio (a
     evidencia sai numa tira ilegivel) sem derrubar teste nenhum. Este teste e o
     que faltava — trava o wrap na coluna CERTA, seja qual for a posicao dela."""
-    from core.modelo import AlocacaoManual, DestinoAlocacao
-
-    from core.modelo import CriterioSugestao
+    from core.modelo import AlocacaoManual, CriterioSugestao, DestinoAlocacao
 
     sintetica = Path(__file__).parent / "fixtures" / "sintetica_integra.xls"
     antes = processar_excel(sintetica).resultados[0]
@@ -887,8 +883,8 @@ def _razao_xls_com_historicos(caminho: Path, historicos: list[str], *,
     historico. `lote` e `cta_part` trocam o numero do lote e a Cta.C.Part. do
     1o debito; `nome_conta` e o nome da conta. Dados ficticios."""
     import xlwt
-    from tests.fixtures.gerar_sinteticas import (
-        CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial)
+
+    from tests.fixtures.gerar_sinteticas import CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Razão")
     ws.write(0, 0, "Empresa:"); ws.write(0, 2, EMPRESA)

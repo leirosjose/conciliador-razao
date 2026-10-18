@@ -23,10 +23,8 @@ from dataclasses import dataclass
 from typing import Callable, Sequence
 
 from core.classifica import Classificacao
-from core.modelo import ItemRevisao, Lancamento, MotivoRevisao, NF, Sugestao
-from core.regras_sugestao import (continuidade_serie_ordinal,
-                                  serie_x_saldo_remanescente,
-                                  serie_x_valor_declarado)
+from core.modelo import NF, ItemRevisao, Lancamento, MotivoRevisao, Sugestao
+from core.regras_sugestao import continuidade_serie_ordinal, serie_x_saldo_remanescente, serie_x_valor_declarado
 
 
 @dataclass(frozen=True)

@@ -1,18 +1,19 @@
 """Textos e fio do cabecalho; somente entradas sinteticas."""
+import ast
+import re
 from dataclasses import replace
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
-import ast
-import re
 
 import pytest
 from streamlit.testing.v1 import AppTest
+
 from app import apresentacao as a
 from app.pipeline import processar_excel
 from core import alocacao
 from core.modelo import ComposicaoItem, Origem
-from parser.excel import ExcelParser, ErroLeituraExcel
+from parser.excel import ErroLeituraExcel, ExcelParser
 
 RAIZ = Path(__file__).resolve().parents[1]
 FIXTURES = RAIZ / 'tests/fixtures'
@@ -156,6 +157,7 @@ from tests.test_texto_upload_e_dica import navegador_texto, pagina_texto
 @pytest.mark.parametrize('nome,rotulo', [('sintetica_integra.xls','Número'), ('sintetica_integra.xlsx','Lote')])
 def test_chromium_titulo_localizacao_motivo_e_aplicar(pagina_texto, nome, rotulo, tmp_path):
     import json
+
     from playwright.sync_api import expect
     page, tema = pagina_texto
     page.set_input_files('input[type="file"]', str(FIXTURES/nome))

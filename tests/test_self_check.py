@@ -19,9 +19,9 @@ from pathlib import Path
 
 import pytest
 
-from parser.excel import ExcelParser
 from core.modelo import Conta, ItemRevisao, Lancamento, MotivoRevisao, Nivel
 from core.veredito import self_check_composicao, self_check_parsing
+from parser.excel import ExcelParser
 
 FIXTURE = Path(__file__).parent / "fixtures" / "golden_sintetico.xls"
 
@@ -193,8 +193,7 @@ def _composicoes_de_campo():
 
 
 def test_self_check_composicao_e_reconciliar_mais_alertas_por_item():
-    from core.veredito import (alertas_por_item, reconciliar,
-                               self_check_composicao)
+    from core.veredito import alertas_por_item, reconciliar, self_check_composicao
     for res in _composicoes_de_campo():
         saldo, balde = res.conta.saldo_final, tuple(res.balde)
         assert (self_check_composicao(res.itens, saldo, balde)

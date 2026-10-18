@@ -4,7 +4,6 @@ razao que entrou), sanitizado pra Windows; colisao no ZIP ganha sufixo _2/_3
 — NUNCA sobrescreve em silencio."""
 from relatorio.nomes import nome_excel, nomes_sem_colisao
 
-
 # --- nome_excel: stem do arquivo de origem + _conferencia.xlsx ---------------
 
 def test_acrescenta_sufixo_de_conferencia_e_altera_a_extensao():

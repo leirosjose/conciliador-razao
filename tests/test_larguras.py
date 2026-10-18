@@ -7,8 +7,7 @@ com data curta dd/mm/aa na tela (o Excel continua com a data completa).
 from datetime import date
 from decimal import Decimal
 
-from app.apresentacao import (ROTULO_TOTAL_EM_ABERTO, composicao_celulas,
-                              composicao_linhas, larguras_composicao)
+from app.apresentacao import ROTULO_TOTAL_EM_ABERTO, composicao_celulas, composicao_linhas, larguras_composicao
 from app.larguras import largura_coluna, largura_texto
 from core.modelo import ComposicaoItem, Origem
 

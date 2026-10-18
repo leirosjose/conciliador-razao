@@ -12,6 +12,7 @@ from pathlib import Path
 
 import pytest
 from streamlit.testing.v1 import AppTest
+
 from tests.helpers import identidade_das_linhas
 
 MAIN = Path(__file__).parent.parent / "app" / "main.py"

@@ -17,7 +17,7 @@ import openpyxl
 import pytest
 from streamlit.testing.v1 import AppTest
 
-from app.apresentacao import (markdown_seguro, sem_link_automatico)
+from app.apresentacao import markdown_seguro, sem_link_automatico
 from tests.test_parser_limpeza import _xls
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -165,6 +165,7 @@ def test_guarda_o_caractere_nao_vaza_pra_chave_nem_pro_nome_entregue(monkeypatch
 def _xls_dois_creditos(caminho, nome="SILVA & CIA FICTICIA LTDA"):
     """.xls sintetico: 1 compra de 1.000,00 e 2 creditos sem padrao conhecido (50,00 e 60,00), que ficam sem destino."""
     import xlwt
+
     from tests.fixtures.gerar_sinteticas import CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial
     wb = xlwt.Workbook()
     ws = wb.add_sheet("Razão")

@@ -365,7 +365,8 @@ class ExcelParser:
                 return _GradeXlsx(str(source))
             except Exception as erro:
                 # ZIP quebrado nao tem reparo (universo diferente do BIFF)
-                _log.warning("arquivo %s: nao abriu como .xlsx (leitor: %s)", hash_do_arquivo(source), type(erro).__name__)
+                _log.warning("arquivo %s: nao abriu como .xlsx (leitor: %s)",
+                             hash_do_arquivo(source), type(erro).__name__)
                 raise ErroLeituraExcel(
                     f"'{nome}' é um .xlsx que não abriu (arquivo corrompido "
                     f"ou incompleto)."
@@ -435,7 +436,8 @@ class ExcelParser:
                 else:
                     # texto cru do leitor/Python ("array index out of
                     # range", "cannot convert float NaN to integer") so' no log
-                    _log.warning("arquivo %s: linha %d nao reconhecida (leitor: %s)", hash_do_arquivo(source), r + 1, type(e).__name__)
+                    _log.warning("arquivo %s: linha %d nao reconhecida (leitor: %s)",
+                                 hash_do_arquivo(source), r + 1, type(e).__name__)
                     fato = "o conteúdo da linha não foi reconhecido"
                 raise ErroLeituraExcel(
                     f"'{nome}': erro lendo a linha {r + 1} da "

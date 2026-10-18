@@ -17,8 +17,7 @@ from core.casamento import casar
 from core.classifica import Classificacao, Tipo
 from core.composicao import compor
 from core.modelo import MotivoRevisao, Origem
-from tests.helpers import lanc
-from tests.helpers import identidade_da_tabela
+from tests.helpers import identidade_da_tabela, lanc
 
 D = Decimal
 

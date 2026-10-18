@@ -19,18 +19,22 @@ from typing import Protocol, Sequence
 from core.alocacao import aplicar
 from core.casamento import casar
 from core.classifica import Classificacao
-from core.composicao import compor, quitadas as nfs_quitadas
-from core.corte import (alerta_periodo_zerado, localizar_corte, particionar,
-                        situar_duplicidade_no_corte)
-from core.modelo import (AlocacaoManual, Conta, DestinoAlocacao,
-                         FechadoPorSaldoZero, Lancamento, Nivel,
-                         ResultadoCasamento, ResultadoConferencia)
+from core.composicao import compor
+from core.composicao import quitadas as nfs_quitadas
+from core.corte import alerta_periodo_zerado, localizar_corte, particionar, situar_duplicidade_no_corte
+from core.modelo import (
+    AlocacaoManual,
+    Conta,
+    DestinoAlocacao,
+    FechadoPorSaldoZero,
+    Lancamento,
+    Nivel,
+    ResultadoCasamento,
+    ResultadoConferencia,
+)
 from core.ponte import montar_ponte, totalizar
 from core.sugestao import sugerir
-from core.veredito import (alertas_por_item, compra_repetida,
-                           duplicidade_de_emissao, reconciliar,
-                           self_check_parsing)
-
+from core.veredito import alertas_por_item, compra_repetida, duplicidade_de_emissao, reconciliar, self_check_parsing
 
 ZERO = Decimal("0.00")
 

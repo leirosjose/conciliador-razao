@@ -4,20 +4,29 @@ campos Decimal + formatacao de exibicao; toda conta de saldo vive no core.
 """
 from __future__ import annotations
 
+import re
 from collections import Counter, namedtuple
 from dataclasses import dataclass, field
 from datetime import date
 from decimal import ROUND_HALF_UP, Decimal
 from html import escape
-import re
 
 from app.larguras import largura_coluna
-
 from core.classifica import Tipo
-from core.modelo import (ALVO_ANTERIOR, Achado, ComposicaoItem,
-                         CriterioDesempate, CriterioSugestao, DestinoAlocacao,
-                         ItemRevisao, Lancamento, MotivoRevisao, Nivel, Origem,
-                         RegraCasamento)
+from core.modelo import (
+    ALVO_ANTERIOR,
+    Achado,
+    ComposicaoItem,
+    CriterioDesempate,
+    CriterioSugestao,
+    DestinoAlocacao,
+    ItemRevisao,
+    Lancamento,
+    MotivoRevisao,
+    Nivel,
+    Origem,
+    RegraCasamento,
+)
 
 CENTAVO = Decimal("0.01")
 _VAZIO = "—"

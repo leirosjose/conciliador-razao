@@ -17,8 +17,7 @@ from __future__ import annotations
 from decimal import Decimal
 from typing import Sequence
 
-from core.modelo import (NF, ComposicaoItem, DecisaoManual, DestinoAlocacao,
-                         ItemRevisao, PonteSaldo, TotaisComposicao)
+from core.modelo import NF, ComposicaoItem, DecisaoManual, DestinoAlocacao, ItemRevisao, PonteSaldo, TotaisComposicao
 
 ZERO = Decimal("0.00")
 

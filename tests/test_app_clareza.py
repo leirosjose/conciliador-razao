@@ -270,7 +270,9 @@ def test_tooltip_do_total_diz_que_compra_e_pago_sao_so_das_notas():
 
 def test_planilha_deixa_compra_e_pago_vazios_e_explica_o_total():
     import io
+
     import openpyxl
+
     from app.pipeline import processar_excel
     from relatorio.excel import ABA_CONFERENCIA, gerar_excel
     res = processar_excel(MISTA).resultados

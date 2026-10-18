@@ -30,19 +30,31 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.worksheet.worksheet import Worksheet
 
-from app.apresentacao import (TITULO_FECHADO, alertas_celulas,
-                              avisos_fechado, balde_celulas,
-                              composicao_celulas, e_subtotal,
-                              fechado_celulas_balde, fechado_celulas_nfs,
-                              itens_da_tabela, nota_fora_da_tabela,
-                              nota_total_so_notas,
-                              ponte_celulas, status_ponte, total_celulas,
-                              contexto_incompleto_texto, data_br,
-                              contexto_de_avisos, decisoes_celulas,
-                              divergencias_celulas,
-                              frases_alertas,
-                              gap_incompleto, notas_composicao_texto,
-                              status_conta, rotulo_saldo_final_planilha)
+from app.apresentacao import (
+    TITULO_FECHADO,
+    alertas_celulas,
+    avisos_fechado,
+    balde_celulas,
+    composicao_celulas,
+    contexto_de_avisos,
+    contexto_incompleto_texto,
+    data_br,
+    decisoes_celulas,
+    divergencias_celulas,
+    e_subtotal,
+    fechado_celulas_balde,
+    fechado_celulas_nfs,
+    gap_incompleto,
+    itens_da_tabela,
+    nota_fora_da_tabela,
+    nota_total_so_notas,
+    notas_composicao_texto,
+    ponte_celulas,
+    rotulo_saldo_final_planilha,
+    status_conta,
+    status_ponte,
+    total_celulas,
+)
 from app.materialidade import frase_contagem_motivos, frase_materialidade
 from core.modelo import ResultadoConferencia
 from parser.excel import grade_bruta

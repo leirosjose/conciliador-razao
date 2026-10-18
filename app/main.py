@@ -10,15 +10,15 @@ Rodar:  streamlit run app/main.py
 from __future__ import annotations
 
 import functools
-from hashlib import sha256
 import logging
 import os
 import pathlib
 import sys
 import tempfile
 from copy import deepcopy
-from threading import Lock
 from dataclasses import dataclass
+from hashlib import sha256
+from threading import Lock
 
 # detalhe tecnico de erro inesperado vai pro log do servico. So fato neutro (hash do arquivo, tipo
 # e lugar do codigo); nunca nome de arquivo, mensagem da excecao nem dado da razao (parser/registro.py)
@@ -44,90 +44,101 @@ import streamlit as st  # noqa: E402
 from streamlit.errors import FragmentHandledException  # noqa: E402,F401
 
 from app.apresentacao import (  # noqa: E402
-    rotulo_saldo,
-    composicao_fechada_texto, ressalva_composicao_texto,
+    CONTAS_NA_TELA,
+    ERRO_CLIQUE,
+    ERRO_TELA,
     FECHA,
     INCOMPLETO,
     PONTE_DIVERGE,
     PONTE_OK,
     PONTE_PENDENTE,
-    abrir_fechado,
-    bloco_linhas_nfs,
-    bloco_linhas_sem_nf,
-    frase_bloco,
-    nota_anterior_fechado,
-    titulo_fechado,
-    balde_detalhes,
-    contexto_de_avisos,
-    frases_alertas,
-    observacoes_tela,
-    alertas_registrados,
     REGISTRADO,
-    composicao_linhas,
-    linhas_sem_nota,
-    nfs_com_possivel_juros,
-    decisoes_linhas,
-    decisao_texto,
-    divergencias,
-    titulo_divergencias,
-    gap_incompleto,
-    markdown_seguro,
-    sem_link_automatico,
-    texto_digitado,
-    md_ja_escapado,
-    historico_html,
-    notas_composicao_texto,
-    contexto_incompleto_texto,
-    moeda_br,
-    e_subtotal,
-    nota_fora_da_tabela,
-    ponte_linhas_tela,
-    ponte_curta_do_total,
-    tabela_html,
-    tabela_triagem,
-    titulo_ponte,
-    status_ponte,
-    placar_composicao,
-    resposta_conferido,
-    colunas_visiveis,
-    saldo_dominio_texto,
     ROTULO_CURTO,
-    ajuda_coluna,
-    rotulo_toggle_quitadas,
-    larguras_composicao,
-    colunas_da_tela,
-    SO_COM_TODAS_AS_COLUNAS,
     ROTULO_TOTAL_COM_QUITADAS,
     ROTULO_TOTAL_EM_ABERTO,
+    SO_COM_TODAS_AS_COLUNAS,
+    FraseAcimaDoLimite,
+    abrir_fechado,
+    ajuda_coluna,
     ajuda_total,
+    alertas_registrados,
+    arquivo_com_conta_grande_texto,
+    arquivo_com_contas_demais_texto,
+    arquivo_com_contas_grandes_texto,
+    balde_detalhes,
+    bloco_linhas_nfs,
+    bloco_linhas_sem_nf,
+    colunas_da_tela,
+    colunas_visiveis,
+    composicao_fechada_texto,
+    composicao_linhas,
+    contas_na_tela_texto,
+    contexto_de_avisos,
+    contexto_incompleto_texto,
+    decisao_texto,
+    decisoes_linhas,
+    divergencias,
+    e_subtotal,
+    erro_planilha_do_arquivo,
+    frase_bloco,
+    frases_alertas,
+    gap_incompleto,
+    historico_html,
     itens_da_tabela,
+    larguras_composicao,
+    linhas_sem_nota,
+    markdown_seguro,
+    md_ja_escapado,
+    nfs_com_possivel_juros,
+    nota_anterior_fechado,
+    nota_fora_da_tabela,
+    notas_composicao_texto,
+    observacoes_tela,
+    ordem_do_lote,
+    placar_composicao,
+    ponte_curta_do_total,
+    ponte_linhas_tela,
+    resposta_conferido,
+    ressalva_composicao_texto,
     resumo_do_trabalho,
     resumo_envio_texto,
+    rotulo_saldo,
+    rotulo_toggle_quitadas,
+    saldo_dominio_texto,
+    sem_link_automatico,
     status_conta,
+    status_ponte,
+    tabela_html,
+    tabela_triagem,
+    texto_digitado,
     titulo_conta,
+    titulo_divergencias,
+    titulo_fechado,
+    titulo_ponte,
     total_linha,
     triagem_linhas,
-    ordem_do_lote,
 )
 from app.destinos import indice_sugerido, opcoes_de_alocacao  # noqa: E402
-from core.modelo import AlocacaoManual  # noqa: E402
 from app.materialidade import (  # noqa: E402
     frase_contagem_motivos,
     frase_materialidade,
     frase_sugestoes,
 )
-from app.pipeline import (MAX_CONTAS_POR_ARQUIVO, MAX_LANCAMENTOS_POR_CONTA,  # noqa: E402
-                          ArquivoAcimaDoLimite, ResultadoProcessamento, chaves_das_contas,
-                          processar_excel)
-from core.modelo import ResultadoConferencia  # noqa: E402
+from app.pipeline import (  # noqa: E402
+    MAX_CONTAS_POR_ARQUIVO,
+    MAX_LANCAMENTOS_POR_CONTA,
+    ArquivoAcimaDoLimite,
+    ResultadoProcessamento,
+    chaves_das_contas,
+    processar_excel,
+)
+from core.modelo import (  # noqa: E402
+    AlocacaoManual,
+    ResultadoConferencia,
+)
 from parser.excel import ErroLeituraExcel  # noqa: E402
 from parser.registro import hash_curto, registrar_excecao  # noqa: E402
-from relatorio import (gerar_excel, nome_excel, nomes_sem_colisao,  # noqa: E402
-                       zip_relatorios)
-from app.apresentacao import (CONTAS_NA_TELA, ERRO_CLIQUE, ERRO_TELA, FraseAcimaDoLimite,  # noqa: E402
-                              arquivo_com_conta_grande_texto, arquivo_com_contas_demais_texto,
-                              arquivo_com_contas_grandes_texto, contas_na_tela_texto,
-                              erro_planilha_do_arquivo)
+from relatorio import gerar_excel, nome_excel, nomes_sem_colisao, zip_relatorios  # noqa: E402
 
 MIME_XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
@@ -907,9 +918,9 @@ def _zona_triagem(lote: list[_EntradaLote]) -> None:
 
 def _janelas_das_contas(lote: list[_EntradaLote], itens: list[tuple[int, object]], *,
                        desenhar: bool = True) -> dict[int, tuple[int, int]]:
-    """Janela [inicio, fim) de contas desenhadas por arquivo, na ordem da triagem; um seletor por arquivo que passa dela.
-    A pagina inteira desenha no maximo MAX_CONTAS_NA_TELA contas: a janela de cada arquivo e' a divisao do total
-    pelos arquivos que tem conta."""
+    """Janela [inicio, fim) de contas desenhadas por arquivo, na ordem da triagem; um seletor por arquivo que
+    passa dela. A pagina inteira desenha no maximo MAX_CONTAS_NA_TELA contas: a janela de cada arquivo e' a
+    divisao do total pelos arquivos que tem conta."""
     totais: dict[int, int] = {}
     for idx, res in itens:
         if res is not None:
@@ -921,7 +932,8 @@ def _janelas_das_contas(lote: list[_EntradaLote], itens: list[tuple[int, object]
             continue
         opcoes = [contas_na_tela_texto(i + 1, min(i + janela, total), total) for i in range(0, total, janela)]
         chave = f"janela::{lote[idx].chave}"
-        rotulo = CONTAS_NA_TELA if len(totais) == 1 else f"{CONTAS_NA_TELA} — {markdown_seguro(sem_link_automatico(lote[idx].nome))}"
+        rotulo = (CONTAS_NA_TELA if len(totais) == 1
+                  else f"{CONTAS_NA_TELA} — {markdown_seguro(sem_link_automatico(lote[idx].nome))}")
         escolhida = (st.selectbox(rotulo, opcoes, key=chave) if desenhar
                      else st.session_state.get(chave, opcoes[0]))
         k = opcoes.index(escolhida) if escolhida in opcoes else 0

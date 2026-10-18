@@ -12,8 +12,7 @@ from decimal import Decimal
 
 import pytest
 
-from core.modelo import (CriterioSugestao, DestinoAlocacao, ItemRevisao,
-                         MotivoRevisao, NF)
+from core.modelo import NF, CriterioSugestao, DestinoAlocacao, ItemRevisao, MotivoRevisao
 from core.regras_sugestao import continuidade_serie_ordinal
 from core.sugestao import ContextoSugestao
 from parser.historico import ClassificadorHistorico

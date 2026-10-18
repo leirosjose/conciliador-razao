@@ -103,9 +103,10 @@ def test_a_ultima_janela_tem_5_contas():
 
 
 def test_a_planilha_leva_as_75_contas_com_a_1a_janela_na_tela():
-    from app.main import _EntradaLote, _downloads_do_lote
-    from app.pipeline import processar_excel
     import tempfile
+
+    from app.main import _downloads_do_lote, _EntradaLote
+    from app.pipeline import processar_excel
     dados = xlsx_de_n_contas(75)
     with tempfile.NamedTemporaryFile(suffix=".xlsx", delete=False) as f:
         f.write(dados)

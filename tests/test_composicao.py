@@ -1,13 +1,12 @@
 from datetime import date
 from decimal import Decimal
 
-from parser.excel import ExcelParser
-from parser.historico import ClassificadorHistorico
 from core.casamento import casar
 from core.composicao import compor, quitadas
+from core.modelo import NF, ComposicaoItem, CriterioDesempate, Desempate, Nivel, Origem
 from core.veredito import self_check_composicao
-from core.modelo import (ComposicaoItem, CriterioDesempate, Desempate, NF,
-                         Origem, Nivel)
+from parser.excel import ExcelParser
+from parser.historico import ClassificadorHistorico
 from tests.helpers import GOLDEN, identidade_da_tabela, lanc
 
 

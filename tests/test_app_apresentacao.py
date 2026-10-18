@@ -7,6 +7,30 @@ from decimal import Decimal
 
 import pytest
 
+import app.apresentacao as apresentacao
+from app.apresentacao import (
+    DIVERGENCIA,
+    FECHA,
+    INCOMPLETO,
+    alertas,
+    alertas_celulas,
+    balde_celulas,
+    balde_detalhes,
+    composicao_linhas,
+    contexto_incompleto,
+    data_br,
+    divergencias,
+    frase_achado,
+    frases_alertas,
+    markdown_seguro,
+    moeda_br,
+    motivo_humano,
+    nome_de_linha,
+    notas_composicao,
+    notas_composicao_texto,
+    status_conta,
+    triagem_linhas,
+)
 from core.modelo import (
     ALVO_ANTERIOR,
     Achado,
@@ -19,32 +43,7 @@ from core.modelo import (
     Origem,
     ResultadoConferencia,
 )
-import app.apresentacao as apresentacao
-from app.apresentacao import (
-    DIVERGENCIA,
-    FECHA,
-    INCOMPLETO,
-    alertas,
-    alertas_celulas,
-    frase_achado,
-    frases_alertas,
-    balde_celulas,
-    balde_detalhes,
-    composicao_linhas,
-    contexto_incompleto,
-    data_br,
-    divergencias,
-    markdown_seguro,
-    moeda_br,
-    nome_de_linha,
-    motivo_humano,
-    notas_composicao,
-    notas_composicao_texto,
-    status_conta,
-    triagem_linhas,
-)
 from tests.helpers import de_moeda_br, identidade_das_linhas
-
 
 # --- moeda_br: Decimal -> padrao BR 1.234,56 ---
 

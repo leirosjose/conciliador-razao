@@ -10,8 +10,7 @@ import xlwt
 from app.pipeline import processar_excel
 from core.modelo import Nivel
 from parser.excel import ExcelParser
-from tests.fixtures.gerar_sinteticas import (
-    CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial)
+from tests.fixtures.gerar_sinteticas import CNPJ, COL_SALDO, EMPRESA, PERIODO, _serial
 
 D = Decimal
 COMPRAS = [(5, "Vr. compras conf. 1111 FORNECEDOR FICTICIO LTDA", "12345.67"),

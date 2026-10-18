@@ -7,8 +7,7 @@ veredito nem casamento. Por isso vive fora do core (app/materialidade.py).
 from decimal import Decimal
 
 from app.apresentacao import balde_celulas
-from app.materialidade import (frase_contagem_motivos, frase_materialidade,
-                               resumo_materialidade)
+from app.materialidade import frase_contagem_motivos, frase_materialidade, resumo_materialidade
 from core.modelo import ItemRevisao, MotivoRevisao
 from tests.helpers import lanc
 

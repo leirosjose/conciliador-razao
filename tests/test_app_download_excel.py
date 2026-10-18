@@ -12,7 +12,7 @@ from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
-from app.main import _EntradaLote, _downloads_do_lote
+from app.main import _downloads_do_lote, _EntradaLote
 from app.pipeline import processar_excel
 from relatorio import zip_relatorios
 

@@ -97,6 +97,7 @@ def test_resposta_com_dois_valores_chega_escapada_na_tela(monkeypatch):
     """O caso exato: duas notas + saldo anterior, dois "R$"."""
     from datetime import date
     from decimal import Decimal as D
+
     from tests.fixtures import gerar_sinteticas as G
     monkeypatch.setattr(G, "SALDO_ANTERIOR", D("-700.00"))
     monkeypatch.setattr(G, "LANCAMENTOS", [
@@ -171,6 +172,7 @@ def _historicos_citados(monkeypatch, historicos):
     o markdown (fonte + flag de HTML) das citacoes "Historico integral"."""
     from datetime import date
     from decimal import Decimal as D
+
     from tests.fixtures import gerar_sinteticas as G
     monkeypatch.setattr(G, "SALDO_ANTERIOR", D("0.00"))
     monkeypatch.setattr(G, "LANCAMENTOS", [
