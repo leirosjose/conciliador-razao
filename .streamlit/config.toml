@@ -1,0 +1,19 @@
+# Config do Streamlit versionada junto com o codigo.
+#
+# toolbarMode "minimal" (doc 1.58): "Show only options set externally (e.g.
+# through Streamlit Community Cloud) or through st.set_page_config. If there
+# are no options left, hide the menu." — rodando como servico local nao ha
+# opcao externa, entao o menu some INTEIRO (Rerun/Clear cache/Print/Deploy),
+# cromo em ingles que nao serve ao colaborador. "viewer" nao bastaria: so
+# esconde as opcoes de desenvolvedor e deixa Rerun/Settings/Print visiveis.
+[client]
+toolbarMode = "minimal"
+# excecao nao capturada nao mostra tipo/traceback/dado na tela
+# (default do 1.58 = "full"); o detalhe fica no log do servico
+showErrorDetails = "none"
+
+# o Streamlit coleta metrica anonima de uso e manda
+# pra fora (webhook externo, visto no localStorage do navegador). Nenhum dado
+# de razao vai junto, mas nenhum dado sai daqui: vale pra conexao tambem.
+[browser]
+gatherUsageStats = false

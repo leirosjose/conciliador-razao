@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest==9.1.1       # suite
+xlwt==1.3.0         # so o gerador das planilhas sinteticas (tests/fixtures/)
+ruff==0.17.1        # lint (pyproject.toml)
+playwright==1.61.0  # gate de tela: upload do exemplo num navegador real (headless)

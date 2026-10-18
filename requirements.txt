@@ -1,0 +1,16 @@
+# Runtime do app (o que a imagem Docker instala). Versoes PINADAS: instalacao
+# do zero pega exatamente o combo testado; subir versao = de proposito + suite.
+xlrd==2.0.2         # le .xls legado (BIFF8)
+openpyxl==3.1.5     # le .xlsx e grava a planilha de conferencia
+olefile==0.47       # abre o container OLE do .xls para o reparo do BIFF
+streamlit==1.58.0   # tela; o CSS do uploader em PT depende dos data-testids desta versao
+pandas==3.0.3       # tabela da tela (app/main.py)
+# Transitivas binarias do streamlit, pinadas: versao nova do pyarrow ja derrubou
+# o AppTest com SIGSEGV; este e o combo testado.
+numpy==2.4.6
+pyarrow==24.0.0
+pillow==12.3.0
+# Transitivas do streamlit pinadas por reprodutibilidade
+GitPython==3.1.62
+anyio==4.14.2
+urllib3==2.8.0
