@@ -146,7 +146,7 @@ python3 -m venv .venv
 .venv/bin/python -m pytest
 ```
 
-São 1.498 testes: 1.463 rodam por padrão (e no CI) e 35 são opcionais, fora da suíte padrão e do CI. Desses, 34
+São 1.494 testes: 1.463 rodam por padrão (e no CI) e 31 são opcionais, fora da suíte padrão e do CI. Desses, 30
 abrem a tela num navegador real (Chromium, via Playwright), ligados por `CONCILIADOR_TESTE_NAVEGADOR=1`:
 
 ```bash
