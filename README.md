@@ -142,11 +142,11 @@ O CI roda lint (ruff), a suíte padrão em Python 3.11 e 3.13 e o build da image
   `tests/GOLDEN.md`, gerados por `tests/fixtures/gerar_sinteticas.py`: rodar duas vezes gera os mesmos bytes.
 - **Docker enxuto.** Usuário não-root, healthcheck e porta publicada só em 127.0.0.1.
 
-## Desenvolvido com Claude Code e Codex
+## Desenvolvido com IA generativa
 
 A arquitetura, as regras de negócio e a validação são minhas.
 
-A implementação foi feita com o Claude Code e o Codex, sob minha revisão:
+A implementação foi feita com inteligência artificial generativa (Claude Code e Codex), sob minha revisão:
 
 - **Trava:** a suíte e o resultado declarado de cada cenário em `tests/GOLDEN.md`; o teste compara, não recalcula;
 - **Regras como teste:** a invariante de lugar e a varredura dos textos da tela rodam na suíte padrão;
@@ -159,4 +159,4 @@ Este repositório público usa só dados sintéticos:
 
 ---
 
-Copyright (c) 2026 José Leiros. Todos os direitos reservados. Código publicado para avaliação de portfólio.
+Copyright (c) 2026 José Leiros. Todos os direitos reservados.
