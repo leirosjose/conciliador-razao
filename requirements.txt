@@ -9,7 +9,7 @@ pandas==3.0.3       # tabela da tela (app/main.py)
 # o AppTest com SIGSEGV; este e o combo testado.
 numpy==2.4.6
 pyarrow==24.0.0
-pillow==12.3.0
+pillow==13.0.0
 # Transitivas do streamlit pinadas por reprodutibilidade
 GitPython==3.1.62
 anyio==4.14.2
