@@ -11,6 +11,6 @@ numpy==2.4.6
 pyarrow==24.0.0
 pillow==12.3.0
 # Transitivas do streamlit pinadas por reprodutibilidade
-GitPython==3.1.62
+GitPython==3.2.1
 anyio==4.14.2
 urllib3==2.8.0
